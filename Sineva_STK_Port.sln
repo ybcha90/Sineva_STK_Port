@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sineva_STK_Port", "Sineve_STK_Port\Sineva_STK_Port.csproj", "{A4941B5B-130A-46F7-A37E-4119C6A0A553}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4941B5B-130A-46F7-A37E-4119C6A0A553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4941B5B-130A-46F7-A37E-4119C6A0A553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4941B5B-130A-46F7-A37E-4119C6A0A553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4941B5B-130A-46F7-A37E-4119C6A0A553}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21EEAA67-AB4E-4355-9301-1F5C2BF97FA2}
+	EndGlobalSection
+EndGlobal
