@@ -8,5 +8,6 @@ namespace Sineva_STK_Port.Define
 {
     internal class Defines
     {
+        //Test
     }
 }
