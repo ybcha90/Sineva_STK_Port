@@ -10,6 +10,8 @@ namespace Sineva_STK_Port
             dbManager.SelectAll("Alarm");
             InitializeComponent();
 
+            //test Git from ping
+
         }
     }
 }
