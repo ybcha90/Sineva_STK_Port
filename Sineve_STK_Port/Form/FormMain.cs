@@ -1,4 +1,5 @@
 using Sineva_STK_Port.Management;
+using System.Data;
 
 namespace Sineva_STK_Port
 {
@@ -6,12 +7,22 @@ namespace Sineva_STK_Port
     {
         public FormMain()
         {
-            DBManager dbManager = new DBManager();
-            dbManager.SelectAll("Alarm");
             InitializeComponent();
+        }
 
-            //test Git from ping
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            DBManager dbManager = new DBManager();
+            //gridAlarmHistory.DataSource = dbManager.GetHistoryDataBase("select * from AlarmHistory");
+        }
 
+        private void Btn_History_Click(object sender, EventArgs e)
+        {
+            FormHistory historyForm = new FormHistory();
+            historyForm.FormBorderStyle = FormBorderStyle.None;
+            historyForm.TopLevel = false;
+            this.panelMain.Controls.Add(historyForm);//将子窗体载入panel
+            historyForm.Show();
         }
     }
 }

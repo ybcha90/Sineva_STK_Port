@@ -5,32 +5,85 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Sineva_STK_Port.Management
 {
     public class DBManager
     {
-        private static string s_configPath = @"D:\DB\STK_Port\PORT.db3";
-        private static string dbName = $@"Data Source={s_configPath}";
-        private SQLiteDataAdapter sqlAdapter;
+        string strConnectPortDB = System.Configuration.ConfigurationManager.ConnectionStrings["PortManager"].ToString();
+        string strConnectHistoryDB = System.Configuration.ConfigurationManager.ConnectionStrings["HistoryManager"].ToString();
 
-        public DataSet SelectAll(string table)
+
+        public DataTable GetPortDataBase(String strSQL)
         {
-            try
+            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectPortDB))
             {
-                DataSet ds = new DataSet();
+                SQLiteCommand ObjCommand = null;
+                SQLiteDataAdapter ObjDataAdapter = null;
 
-                string sql = $"SELECT * FROM {table}";
-                sqlAdapter = new SQLiteDataAdapter(sql, dbName);
-                sqlAdapter.Fill(ds, table);
+                DataTable dataTable = null;
+                try
+                {
+                    ObjCommand = new SQLiteCommand(strSQL, objConnection);
+                    ObjCommand.CommandType = CommandType.Text;
 
-                if (ds.Tables.Count > 0) return ds;
-                else return null;
+                    objConnection.Open();
+
+                    dataTable = new DataTable();
+                    ObjDataAdapter = new SQLiteDataAdapter(ObjCommand);
+
+                    ObjDataAdapter.Fill(dataTable);
+
+                    return dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return new DataTable();
+                }
+                finally
+                {
+                    //ObjDataAdapter.Dispose();
+                    //ObjCommand.Dispose();
+                    objConnection.Close();
+                }
             }
-            catch (Exception e)
+        }
+
+        public DataTable GetHistoryDataBase(String strSQL)
+        {
+            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectHistoryDB))
             {
-                MessageBox.Show(e.ToString());
-                throw;
+                SQLiteCommand ObjCommand = null;
+                SQLiteDataAdapter ObjDataAdapter = null;
+
+                DataTable dataTable = null;
+                try
+                {
+                    ObjCommand = new SQLiteCommand(strSQL, objConnection);
+                    ObjCommand.CommandType = CommandType.Text;
+
+                    objConnection.Open();
+
+                    dataTable = new DataTable();
+                    ObjDataAdapter = new SQLiteDataAdapter(ObjCommand);
+
+                    ObjDataAdapter.Fill(dataTable);
+
+                    return dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return new DataTable();
+                }
+                finally
+                {
+                    ObjDataAdapter.Dispose();
+                    ObjCommand.Dispose();
+                    objConnection.Close();
+                }
             }
         }
     }

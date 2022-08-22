@@ -33,7 +33,7 @@ namespace Sineva_STK_Port.Define
     }
     public enum ErrorCode : ushort
     {
-        SUCESS = 0,
+        SUCCESS = 0,
         ERROR_INVALID_SOURCE = 1,
         ERROR_INVALID_DESTINY = 2,
         ERROR_FAIL_TO_READ_BCR = 3,
@@ -44,29 +44,39 @@ namespace Sineva_STK_Port.Define
         HANDOFF_TYPE_MANUAL = 0,
         HANDOFF_TYPE_AUTOMATED = 1
     }
-    public enum PortState : ushort
-    {
-        PORT_STATE_IDLE = 0,
-        PORT_STATE_ACTIVE = 1,
-    }
     public enum PortType : ushort
     {
-        NONE = 0,
+        PORT_TYPE_NONE = 0,
         PORT_TYPE_LP = 1,
         PORT_TYPE_BP = 2,
         PORT_TYPE_OP = 3
     }
-    public enum PortMode : ushort
+    public enum PortControlMode : ushort
     {
-        NONE = 0,
-        Manual = 1,
-        Auto = 2
+        PORT_CONTROL_MODE_NONE = 0,
+        PORT_CONTROL_MODE_MANUAL = 1,
+        PORT_CONTROL_MODE_AUTO = 2
+    }
+    public enum UseableStatus : ushort
+    {
+        PORT_USEABLE_NONE = 0,
+        PORT_DISABLED = 1,
+        PORT_ENABLED = 2
     }
     public enum ProcessStatus : ushort
     {
-        NONE = 0,
-        Disable = 1,
-        Enable = 2
+        PROCESS_STATUS_NONE = 0,
+        PROCESS_STATUS_IDLE = 1,
+        PROCESS_STATUS_AUTO_RUN = 2,
+        PROCESS_STATUS_AUTO_MANUAL = 3,
+        PROCESS_STATUS_ALARM = 4
     }
-    
+
+    public enum PortInOutMode : ushort
+    {
+        INPUT_MODE = 1,
+        OUTPUT_MODE = 2,
+        BOTH_MODE = 3,
+    }
+
 }
