@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHistory));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.TabHistory = new System.Windows.Forms.TabControl();
+            this.tabPageCarrierLog = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gridCarrierHistory = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,37 +45,38 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.TabHistory.SuspendLayout();
+            this.tabPageCarrierLog.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarrierHistory)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // TabHistory
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1072, 741);
-            this.tabControl1.TabIndex = 0;
+            this.TabHistory.Controls.Add(this.tabPageCarrierLog);
+            this.TabHistory.Controls.Add(this.tabPage2);
+            this.TabHistory.Controls.Add(this.tabPage3);
+            this.TabHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabHistory.ItemSize = new System.Drawing.Size(100, 50);
+            this.TabHistory.Location = new System.Drawing.Point(0, 0);
+            this.TabHistory.Name = "TabHistory";
+            this.TabHistory.SelectedIndex = 0;
+            this.TabHistory.Size = new System.Drawing.Size(1072, 741);
+            this.TabHistory.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPageCarrierLog
             // 
-            this.tabPage1.Controls.Add(this.panel2);
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1064, 713);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageCarrierLog.Controls.Add(this.panel2);
+            this.tabPageCarrierLog.Controls.Add(this.panel1);
+            this.tabPageCarrierLog.Location = new System.Drawing.Point(4, 54);
+            this.tabPageCarrierLog.Name = "tabPageCarrierLog";
+            this.tabPageCarrierLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCarrierLog.Size = new System.Drawing.Size(1064, 683);
+            this.tabPageCarrierLog.TabIndex = 0;
+            this.tabPageCarrierLog.Text = "tabPage1";
+            this.tabPageCarrierLog.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -83,7 +84,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(835, 707);
+            this.panel2.Size = new System.Drawing.Size(835, 677);
             this.panel2.TabIndex = 1;
             // 
             // gridCarrierHistory
@@ -93,7 +94,7 @@
             this.gridCarrierHistory.Location = new System.Drawing.Point(0, 0);
             this.gridCarrierHistory.Name = "gridCarrierHistory";
             this.gridCarrierHistory.RowTemplate.Height = 25;
-            this.gridCarrierHistory.Size = new System.Drawing.Size(835, 707);
+            this.gridCarrierHistory.Size = new System.Drawing.Size(835, 677);
             this.gridCarrierHistory.TabIndex = 0;
             // 
             // panel1
@@ -108,7 +109,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(838, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(223, 707);
+            this.panel1.Size = new System.Drawing.Size(223, 677);
             this.panel1.TabIndex = 0;
             // 
             // Btn_CarrierSearch
@@ -178,10 +179,10 @@
             // 
             this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Controls.Add(this.panel4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Location = new System.Drawing.Point(4, 54);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1064, 713);
+            this.tabPage2.Size = new System.Drawing.Size(1064, 683);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -191,7 +192,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(838, 707);
+            this.panel3.Size = new System.Drawing.Size(838, 677);
             this.panel3.TabIndex = 3;
             // 
             // panel4
@@ -199,7 +200,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(841, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(220, 707);
+            this.panel4.Size = new System.Drawing.Size(220, 677);
             this.panel4.TabIndex = 2;
             // 
             // tabPage3
@@ -212,16 +213,16 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // History
+            // FormHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1072, 741);
-            this.Controls.Add(this.tabControl1);
-            this.Name = "History";
+            this.Controls.Add(this.TabHistory);
+            this.Name = "FormHistory";
             this.Text = "Form1";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.TabHistory.ResumeLayout(false);
+            this.tabPageCarrierLog.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCarrierHistory)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -233,8 +234,8 @@
 
         #endregion
 
-        private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabControl TabHistory;
+        private TabPage tabPageCarrierLog;
         private TabPage tabPage2;
         private Panel panel2;
         private Panel panel1;

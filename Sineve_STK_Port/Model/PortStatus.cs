@@ -15,8 +15,10 @@ namespace Sineva_STK_Port.Model
         public int PortID { get; set; }
 	    public int ZoneCapacity { get; set; }
 	    public HandoffType HandoffType { get; set; }
-	    public PortState PrevCarrierState { get; set; }
-	    public PortState CurrentCarrierState { get; set; }
+        public PortInOutMode PortInOutMode { get; set; }
+        public PortControlMode PortControlMode { get; set; }
+	    public ProcessStatus ProcessStatus { get; set; }
+	    //public PortState CurrentCarrierState { get; set; }
 	    public bool IsEnabled { get; set; }
 
         public bool ReportPortStatusData()
@@ -24,7 +26,7 @@ namespace Sineva_STK_Port.Model
             bool _isSend = false;
             string _sendPacketData = string.Empty;
 
-            _sendPacketData = $"{CarrierID}{PortType}{PortID}{ZoneCapacity}{HandoffType}{PrevCarrierState}{CurrentCarrierState}{IsEnabled}";
+            _sendPacketData = $"{CarrierID}{PortType}{PortID}{ZoneCapacity}{HandoffType}{PortInOutMode}{PortControlMode}{ProcessStatus}{IsEnabled}";
             
             return _isSend;
         }
