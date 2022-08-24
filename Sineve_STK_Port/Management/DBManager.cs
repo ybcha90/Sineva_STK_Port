@@ -11,9 +11,29 @@ namespace Sineva_STK_Port.Management
 {
     public class DBManager
     {
+        #region Singleton
+        private static volatile DBManager instance;
+        private static object syncRoot = new object();
+
+        public static DBManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                            instance = new DBManager();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion
+
         string strConnectPortDB = System.Configuration.ConfigurationManager.ConnectionStrings["PortManager"].ToString();
         string strConnectHistoryDB = System.Configuration.ConfigurationManager.ConnectionStrings["HistoryManager"].ToString();
-
 
         public DataTable GetPortDataBase(String strSQL)
         {
