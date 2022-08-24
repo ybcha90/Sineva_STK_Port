@@ -10,6 +10,27 @@ namespace Sineva_STK_Port.Model
 {
     public class PortStatus
     {
+        #region Singleton
+        private static volatile PortStatus instance;
+        private static object syncRoot = new object();
+
+        public static PortStatus Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                            instance = new PortStatus();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion
+
         public string CarrierID { get; set; } = string.Empty;
         public PortType PortType { get; set; }
         public int PortID { get; set; }
