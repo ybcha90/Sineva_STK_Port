@@ -79,4 +79,13 @@ namespace Sineva_STK_Port.Define
         BOTH_MODE = 3,
     }
 
+    public enum Input : ushort
+    {
+
+    }
+
+    public enum Output : ushort
+    {
+
+    }
 }
