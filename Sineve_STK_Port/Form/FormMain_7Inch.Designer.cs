@@ -1,7 +1,7 @@
 ﻿
 namespace Sineva_STK_Port
 {
-    partial class FormMain_7Inchi
+    partial class FormMain_7Inch
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@ namespace Sineva_STK_Port
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain_7Inchi));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain_7Inch));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.Btn_PortID = new System.Windows.Forms.Button();
@@ -39,6 +39,9 @@ namespace Sineva_STK_Port
             this.button12 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.Btn_CarrierAccState = new System.Windows.Forms.Button();
+            this.Btn_TransferState = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.Btn_Exit = new System.Windows.Forms.Button();
@@ -76,8 +79,8 @@ namespace Sineva_STK_Port
             // 
             // button9
             // 
-            this.button9.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button9.Location = new System.Drawing.Point(880, 1);
+            this.button9.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button9.Location = new System.Drawing.Point(877, 1);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(120, 60);
             this.button9.TabIndex = 6;
@@ -86,7 +89,7 @@ namespace Sineva_STK_Port
             // 
             // Btn_PortID
             // 
-            this.Btn_PortID.Font = new System.Drawing.Font("Malgun Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Btn_PortID.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Btn_PortID.Location = new System.Drawing.Point(1, 1);
             this.Btn_PortID.Name = "Btn_PortID";
             this.Btn_PortID.Size = new System.Drawing.Size(400, 60);
@@ -95,8 +98,8 @@ namespace Sineva_STK_Port
             // 
             // Btn_CarrierID
             // 
-            this.Btn_CarrierID.Font = new System.Drawing.Font("Malgun Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Btn_CarrierID.Location = new System.Drawing.Point(406, 1);
+            this.Btn_CarrierID.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Btn_CarrierID.Location = new System.Drawing.Point(404, 1);
             this.Btn_CarrierID.Name = "Btn_CarrierID";
             this.Btn_CarrierID.Size = new System.Drawing.Size(470, 60);
             this.Btn_CarrierID.TabIndex = 0;
@@ -106,40 +109,41 @@ namespace Sineva_STK_Port
             // 
             // Btn_Login
             // 
-            this.Btn_Login.Font = new System.Drawing.Font("Malgun Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Btn_Login.Location = new System.Drawing.Point(4, 2);
+            this.Btn_Login.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Btn_Login.Location = new System.Drawing.Point(143, 3);
             this.Btn_Login.Name = "Btn_Login";
-            this.Btn_Login.Size = new System.Drawing.Size(155, 85);
+            this.Btn_Login.Size = new System.Drawing.Size(140, 70);
             this.Btn_Login.TabIndex = 9;
             this.Btn_Login.Text = "Log In";
             this.Btn_Login.UseVisualStyleBackColor = true;
+            this.Btn_Login.Click += new System.EventHandler(this.Btn_Login_Click);
             // 
             // button10
             // 
-            this.button10.Font = new System.Drawing.Font("Malgun Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button10.Location = new System.Drawing.Point(2, 199);
+            this.button10.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button10.Location = new System.Drawing.Point(1, 71);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(155, 90);
+            this.button10.Size = new System.Drawing.Size(140, 68);
             this.button10.TabIndex = 15;
             this.button10.Text = "OUTPUT";
             this.button10.UseVisualStyleBackColor = true;
             // 
             // button12
             // 
-            this.button12.Font = new System.Drawing.Font("Malgun Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button12.Location = new System.Drawing.Point(3, 103);
+            this.button12.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button12.Location = new System.Drawing.Point(1, 1);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(155, 85);
+            this.button12.Size = new System.Drawing.Size(140, 68);
             this.button12.TabIndex = 13;
             this.button12.Text = "Normal";
             this.button12.UseVisualStyleBackColor = true;
             // 
             // button16
             // 
-            this.button16.Font = new System.Drawing.Font("Malgun Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button16.Location = new System.Drawing.Point(2, 299);
+            this.button16.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button16.Location = new System.Drawing.Point(1, 141);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(155, 90);
+            this.button16.Size = new System.Drawing.Size(140, 68);
             this.button16.TabIndex = 9;
             this.button16.Text = "AUTO";
             this.button16.UseVisualStyleBackColor = true;
@@ -149,45 +153,77 @@ namespace Sineva_STK_Port
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.Btn_CarrierAccState);
+            this.panel2.Controls.Add(this.Btn_TransferState);
             this.panel2.Controls.Add(this.button16);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button10);
             this.panel2.Controls.Add(this.button12);
-            this.panel2.Controls.Add(this.button24);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 66);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(165, 491);
+            this.panel2.Size = new System.Drawing.Size(147, 491);
             this.panel2.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button4.Location = new System.Drawing.Point(1, 347);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(140, 68);
+            this.button4.TabIndex = 19;
+            this.button4.Text = "CarrierStopped";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // Btn_CarrierAccState
+            // 
+            this.Btn_CarrierAccState.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Btn_CarrierAccState.Location = new System.Drawing.Point(1, 279);
+            this.Btn_CarrierAccState.Name = "Btn_CarrierAccState";
+            this.Btn_CarrierAccState.Size = new System.Drawing.Size(140, 68);
+            this.Btn_CarrierAccState.TabIndex = 18;
+            this.Btn_CarrierAccState.Text = "CarrierStopped";
+            this.Btn_CarrierAccState.UseVisualStyleBackColor = true;
+            // 
+            // Btn_TransferState
+            // 
+            this.Btn_TransferState.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Btn_TransferState.Location = new System.Drawing.Point(1, 210);
+            this.Btn_TransferState.Name = "Btn_TransferState";
+            this.Btn_TransferState.Size = new System.Drawing.Size(140, 68);
+            this.Btn_TransferState.TabIndex = 17;
+            this.Btn_TransferState.Text = "Blocked";
+            this.Btn_TransferState.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(3, 396);
+            this.button2.Location = new System.Drawing.Point(1, 416);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 90);
+            this.button2.Size = new System.Drawing.Size(140, 70);
             this.button2.TabIndex = 16;
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button24
             // 
-            this.button24.Font = new System.Drawing.Font("Malgun Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button24.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button24.Location = new System.Drawing.Point(3, 5);
+            this.button24.Location = new System.Drawing.Point(1, 3);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(155, 90);
+            this.button24.Size = new System.Drawing.Size(140, 70);
             this.button24.TabIndex = 2;
             this.button24.Text = "Menu";
             this.button24.UseVisualStyleBackColor = true;
             // 
             // Btn_Exit
             // 
-            this.Btn_Exit.Font = new System.Drawing.Font("Malgun Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Btn_Exit.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Btn_Exit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Exit.Location = new System.Drawing.Point(677, 3);
+            this.Btn_Exit.Location = new System.Drawing.Point(710, 3);
             this.Btn_Exit.Name = "Btn_Exit";
-            this.Btn_Exit.Size = new System.Drawing.Size(155, 85);
+            this.Btn_Exit.Size = new System.Drawing.Size(140, 70);
             this.Btn_Exit.TabIndex = 3;
             this.Btn_Exit.Text = "Exit";
             this.Btn_Exit.UseVisualStyleBackColor = true;
@@ -195,11 +231,11 @@ namespace Sineva_STK_Port
             // 
             // button21
             // 
-            this.button21.Font = new System.Drawing.Font("Malgun Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button21.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button21.Location = new System.Drawing.Point(174, 4);
+            this.button21.Location = new System.Drawing.Point(284, 3);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(155, 85);
+            this.button21.Size = new System.Drawing.Size(140, 70);
             this.button21.TabIndex = 2;
             this.button21.Text = "Start";
             this.button21.UseVisualStyleBackColor = true;
@@ -304,9 +340,9 @@ namespace Sineva_STK_Port
             // 
             this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(165, 66);
+            this.panelMain.Location = new System.Drawing.Point(147, 66);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(839, 397);
+            this.panelMain.Size = new System.Drawing.Size(857, 413);
             this.panelMain.TabIndex = 3;
             // 
             // panel3
@@ -318,31 +354,32 @@ namespace Sineva_STK_Port
             this.panel3.Controls.Add(this.Btn_Login);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.Btn_Exit);
+            this.panel3.Controls.Add(this.button24);
             this.panel3.Controls.Add(this.button21);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(165, 463);
+            this.panel3.Location = new System.Drawing.Point(147, 479);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(839, 94);
+            this.panel3.Size = new System.Drawing.Size(857, 78);
             this.panel3.TabIndex = 2;
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("Malgun Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button3.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(511, 4);
+            this.button3.Location = new System.Drawing.Point(568, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(155, 85);
+            this.button3.Size = new System.Drawing.Size(140, 70);
             this.button3.TabIndex = 5;
             this.button3.Text = "Reset";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Malgun Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(342, 4);
+            this.button1.Location = new System.Drawing.Point(426, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 85);
+            this.button1.Size = new System.Drawing.Size(140, 70);
             this.button1.TabIndex = 4;
             this.button1.Text = "Stop";
             this.button1.UseVisualStyleBackColor = true;
@@ -396,5 +433,8 @@ namespace Sineva_STK_Port
         private Button Btn_Login;
         private Button Btn_CarrierID;
         private Button button2;
+        private Button Btn_CarrierAccState;
+        private Button Btn_TransferState;
+        private Button button4;
     }
 }

@@ -2,9 +2,9 @@ using Sineva_STK_Port.Management;
 
 namespace Sineva_STK_Port
 {
-    public partial class FormMain_7Inchi : Form
+    public partial class FormMain_7Inch : Form
     {
-        public FormMain_7Inchi()
+        public FormMain_7Inch()
         {
             InitializeComponent();
         }
@@ -19,6 +19,12 @@ namespace Sineva_STK_Port
         private void Btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Btn_Login_Click(object sender, EventArgs e)
+        {
+            FormLogin formLogin = new FormLogin();
+            formLogin.ShowDialog();
         }
 
         //private void Btn_History_Click(object sender, EventArgs e)
