@@ -106,5 +106,42 @@ namespace Sineva_STK_Port.Management
                 }
             }
         }
+
+        public DataTable GetUserByUserID(String strUserId)
+        {
+            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectPortDB))
+            {
+                SQLiteCommand ObjCommand = null;
+                SQLiteDataAdapter ObjDataAdapter = null;
+
+                DataTable dataTable = null;
+                try
+                {
+                    string strSQL = string.Format(@"select * from User where ID = '{0}'", strUserId);
+                    ObjCommand = new SQLiteCommand(strSQL, objConnection);
+                    ObjCommand.CommandType = CommandType.Text;
+
+                    objConnection.Open();
+
+                    dataTable = new DataTable();
+                    ObjDataAdapter = new SQLiteDataAdapter(ObjCommand);
+
+                    ObjDataAdapter.Fill(dataTable);
+
+                    return dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return new DataTable();
+                }
+                finally
+                {
+                    ObjDataAdapter.Dispose();
+                    ObjCommand.Dispose();
+                    objConnection.Close();
+                }
+            }
+        }
     }
 }
