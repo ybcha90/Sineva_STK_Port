@@ -12,6 +12,7 @@ namespace Sineva_STK_Port
         private void FormMain_7Inchi_Load(object sender, EventArgs e)
         {
             DBManager dbManager = new DBManager();
+            //string PortInfo=string.Empty;
             //gridAlarmHistory.DataSource = dbManager.GetHistoryDataBase("select * from AlarmHistory");
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
