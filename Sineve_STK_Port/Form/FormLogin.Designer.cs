@@ -43,38 +43,43 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 29);
+            this.label1.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(22, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 15);
+            this.label1.Size = new System.Drawing.Size(36, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID: ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(219, 29);
+            this.label2.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(210, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 15);
+            this.label2.Size = new System.Drawing.Size(95, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Password: ";
             // 
             // txtUserID
             // 
-            this.txtUserID.Location = new System.Drawing.Point(64, 28);
+            this.txtUserID.Font = new System.Drawing.Font("Lucida Bright", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtUserID.Location = new System.Drawing.Point(56, 28);
             this.txtUserID.Name = "txtUserID";
-            this.txtUserID.Size = new System.Drawing.Size(123, 23);
+            this.txtUserID.Size = new System.Drawing.Size(123, 30);
             this.txtUserID.TabIndex = 2;
             // 
             // txtUserPW
             // 
-            this.txtUserPW.Location = new System.Drawing.Point(289, 28);
+            this.txtUserPW.Font = new System.Drawing.Font("Lucida Bright", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtUserPW.Location = new System.Drawing.Point(301, 28);
             this.txtUserPW.Name = "txtUserPW";
-            this.txtUserPW.Size = new System.Drawing.Size(123, 23);
+            this.txtUserPW.Size = new System.Drawing.Size(123, 30);
             this.txtUserPW.TabIndex = 3;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(31, 156);
+            this.btnOK.Font = new System.Drawing.Font("Lucida Bright", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnOK.Location = new System.Drawing.Point(56, 156);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(128, 52);
             this.btnOK.TabIndex = 4;
@@ -84,7 +89,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(219, 156);
+            this.btnCancel.Font = new System.Drawing.Font("Lucida Bright", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCancel.Location = new System.Drawing.Point(251, 156);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(128, 52);
             this.btnCancel.TabIndex = 5;
@@ -96,6 +102,7 @@
             // 
             this.groupBox1.Controls.Add(this.rbtnEng);
             this.groupBox1.Controls.Add(this.rBtnChn);
+            this.groupBox1.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(31, 75);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(381, 63);
@@ -107,9 +114,10 @@
             // 
             this.rbtnEng.AutoSize = true;
             this.rbtnEng.Checked = true;
-            this.rbtnEng.Location = new System.Drawing.Point(62, 28);
+            this.rbtnEng.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rbtnEng.Location = new System.Drawing.Point(98, 28);
             this.rbtnEng.Name = "rbtnEng";
-            this.rbtnEng.Size = new System.Drawing.Size(48, 19);
+            this.rbtnEng.Size = new System.Drawing.Size(62, 22);
             this.rbtnEng.TabIndex = 10;
             this.rbtnEng.TabStop = true;
             this.rbtnEng.Text = "ENG";
@@ -118,9 +126,10 @@
             // rBtnChn
             // 
             this.rBtnChn.AutoSize = true;
-            this.rBtnChn.Location = new System.Drawing.Point(201, 28);
+            this.rBtnChn.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rBtnChn.Location = new System.Drawing.Point(225, 28);
             this.rBtnChn.Name = "rBtnChn";
-            this.rBtnChn.Size = new System.Drawing.Size(51, 19);
+            this.rBtnChn.Size = new System.Drawing.Size(64, 22);
             this.rBtnChn.TabIndex = 9;
             this.rBtnChn.Text = "CHN";
             this.rBtnChn.UseVisualStyleBackColor = true;
