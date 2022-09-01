@@ -88,4 +88,12 @@ namespace Sineva_STK_Port.Define
     {
 
     }
+
+    public enum SytemUserGroup
+    {
+        Manager,
+        Engineer,
+        Operator,
+    }
+
 }
