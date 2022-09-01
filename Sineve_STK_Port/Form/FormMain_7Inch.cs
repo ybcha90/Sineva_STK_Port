@@ -1,4 +1,6 @@
 using Sineva_STK_Port.Management;
+using System.Data;
+using Sineva_STK_Port.Define;
 
 namespace Sineva_STK_Port
 {
@@ -11,12 +13,18 @@ namespace Sineva_STK_Port
 
         private void FormMain_7Inchi_Load(object sender, EventArgs e)
         {
-            DBManager dbManager = new DBManager();
-            //string PortInfo=string.Empty;
-            //gridAlarmHistory.DataSource = dbManager.GetHistoryDataBase("select * from AlarmHistory");
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-        }
+            this.ActiveControl = button2;
+            CDisplayManager.Instance.RefreshVerifyPrivilege(this.panelLeft.Controls, SytemUserGroup.Operator.ToString());
+            CDisplayManager.Instance.RefreshVerifyPrivilege(this.panelDown.Controls, SytemUserGroup.Operator.ToString());
+            GetPortInfo();
 
+        }
+        private void GetPortInfo()
+        {
+            DataTable Portinfo = DBManager.Instance.GetPortInfo();
+            Btn_PortID.Text = "PortID："+Portinfo.Rows[0][0].ToString();
+        }
         private void Btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -27,14 +35,5 @@ namespace Sineva_STK_Port
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog();
         }
-
-        //private void Btn_History_Click(object sender, EventArgs e)
-        //{
-        //    FormHistory historyForm = new FormHistory();
-        //    historyForm.FormBorderStyle = FormBorderStyle.None;
-        //    historyForm.TopLevel = false;
-        //    this.panelMain.Controls.Add(historyForm);//将子窗体载入panel
-        //    historyForm.Show();
-        //}
     }
 }
