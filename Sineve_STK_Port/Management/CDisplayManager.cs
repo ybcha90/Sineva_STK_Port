@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sineva_STK_Port.Define;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,8 @@ namespace Sineva_STK_Port.Management
         }
         #endregion
 
-
+        public string strUserGroup = SytemUserGroup.Operator.ToString();
+        public string strLanguage = SystemLanguage.ENG.ToString();
         public void RefreshVerifyPrivilege(Control.ControlCollection parentControl, string strPrivilege)
         {
             List<string> listBtnName = new List<string>();

@@ -14,6 +14,8 @@ namespace Sineva_STK_Port
 {
     public partial class FormLogin : Form
     {
+        public delegate void UserLoginEventHandler();
+        public event UserLoginEventHandler refreshPrivilege;
         public FormLogin()
         {
             InitializeComponent();
@@ -44,15 +46,16 @@ namespace Sineva_STK_Port
             }
             if (dt.Rows[0]["Password"].ToString() == txtUserPW.Text)
             {
-                if (rbtnEng.Checked)
-                {
-
-                }
-                else if (rBtnChn.Checked)
-                {
-                }
-
                 MessageBox.Show("Login successful!", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (dt.Rows[0]["GroupID"].ToString() != null)
+                {
+                    CDisplayManager.Instance.strUserGroup = dt.Rows[0]["GroupID"].ToString();
+                }
+
+                CDisplayManager.Instance.strLanguage = rbtnEng.Checked ? "ENG" : "CHN";
+                this.refreshPrivilege();
+
                 this.Close();   
             }
             else

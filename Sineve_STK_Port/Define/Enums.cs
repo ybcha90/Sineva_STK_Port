@@ -96,4 +96,10 @@ namespace Sineva_STK_Port.Define
         Operator,
     }
 
+    public enum SystemLanguage
+    {
+        ENG,
+        CHN,
+    }
+
 }

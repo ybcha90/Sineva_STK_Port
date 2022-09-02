@@ -73,6 +73,7 @@
             this.txtUserPW.Font = new System.Drawing.Font("Lucida Bright", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtUserPW.Location = new System.Drawing.Point(301, 28);
             this.txtUserPW.Name = "txtUserPW";
+            this.txtUserPW.PasswordChar = '*';
             this.txtUserPW.Size = new System.Drawing.Size(123, 30);
             this.txtUserPW.TabIndex = 3;
             // 
