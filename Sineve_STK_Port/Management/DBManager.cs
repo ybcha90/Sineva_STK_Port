@@ -36,7 +36,7 @@ namespace Sineva_STK_Port.Management
         string strConnectPortDB = System.Configuration.ConfigurationManager.ConnectionStrings["PortManager"].ToString();
         string strConnectHistoryDB = System.Configuration.ConfigurationManager.ConnectionStrings["HistoryManager"].ToString();
 
-        public DataTable GetPortDataBase(String strSQL)
+        public DataTable GetPortDataBase(string strSQL)
         {
             using (SQLiteConnection objConnection = new SQLiteConnection(strConnectPortDB))
             {
@@ -73,7 +73,52 @@ namespace Sineva_STK_Port.Management
             }
         }
 
-        public DataTable GetHistoryDataBase(String strSQL)
+        public List<string> GetListFromPortDB(string strSQL, string col)
+        {
+            List<string> listBtnName = new List<string>();
+            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectPortDB))
+            {
+                SQLiteCommand ObjCommand;
+                SQLiteDataAdapter ObjDataAdapter;
+
+                DataTable dataTable;
+                try
+                {
+                    ObjCommand = new SQLiteCommand(strSQL, objConnection);
+                    ObjCommand.CommandType = CommandType.Text;
+
+                    objConnection.Open();
+
+                    dataTable = new DataTable();
+                    ObjDataAdapter = new SQLiteDataAdapter(ObjCommand);
+
+                    ObjDataAdapter.Fill(dataTable);
+                    if (dataTable.Rows.Count > 0)
+                    {
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            listBtnName.Add(row[col].ToString());
+                        }
+                    }
+
+                    return listBtnName;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return listBtnName;
+                }
+                finally
+                {
+                    if (objConnection.State == ConnectionState.Open)
+                    {
+                        objConnection.Close();
+                    }
+                }
+            }
+        }
+
+        public DataTable GetHistoryDataBase(string strSQL)
         {
             using (SQLiteConnection objConnection = new SQLiteConnection(strConnectHistoryDB))
             {
@@ -110,7 +155,7 @@ namespace Sineva_STK_Port.Management
             }
         }
 
-        public bool InsertHistoryDataBase(List<String> sqlList)
+        public bool InsertHistoryDataBase(List<string> sqlList)
         {
             using (SQLiteConnection objConnection = new SQLiteConnection(strConnectHistoryDB))
             {
@@ -147,126 +192,28 @@ namespace Sineva_STK_Port.Management
             }
         }
 
-        public DataTable GetUserByUserID(String strUserId)
+        public DataTable GetUserByUserID(string strUserId)
         {
-            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectPortDB))
-            {
-                SQLiteCommand ObjCommand;
-                SQLiteDataAdapter ObjDataAdapter;
-
-                DataTable dataTable;
-                try
-                {
-                    string strSQL = string.Format(@"select * from User where ID = '{0}'", strUserId);
-                    ObjCommand = new SQLiteCommand(strSQL, objConnection);
-                    ObjCommand.CommandType = CommandType.Text;
-
-                    objConnection.Open();
-
-                    dataTable = new DataTable();
-                    ObjDataAdapter = new SQLiteDataAdapter(ObjCommand);
-
-                    ObjDataAdapter.Fill(dataTable);
-
-                    return dataTable;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return new DataTable();
-                }
-                finally
-                {
-                    if (objConnection.State == ConnectionState.Open)
-                    {
-                        objConnection.Close();
-                    }
-                }
-            }
+            string strSQL = string.Format(@"select * from User where ID = '{0}'", strUserId);
+            return GetPortDataBase(strSQL);
         }
 
-        public List<string> GetBtnNameByGroupId(String groupID)
+        public List<string> GetBtnNameByGroupId(string groupID)
         {
-            List<string> listBtnName = new List<string>();
-            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectPortDB))
-            {
-                SQLiteCommand ObjCommand;
-                SQLiteDataAdapter ObjDataAdapter;
-
-                DataTable dataTable;
-                try
-                {
-                    string strSQL = string.Format(@"select BtnName from MenuGroup where GroupID = '{0}' and Enabled = 1", groupID);
-                    ObjCommand = new SQLiteCommand(strSQL, objConnection);
-                    ObjCommand.CommandType = CommandType.Text;
-
-                    objConnection.Open();
-
-                    dataTable = new DataTable();
-                    ObjDataAdapter = new SQLiteDataAdapter(ObjCommand);
-
-                    ObjDataAdapter.Fill(dataTable);
-                    if (dataTable.Rows.Count > 0)
-                    {
-                        foreach (DataRow row in dataTable.Rows)
-                        {
-                            listBtnName.Add(row["BtnName"].ToString());
-                        }
-                    }
-
-                    return listBtnName;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return listBtnName;
-                }
-                finally
-                {
-                    if (objConnection.State == ConnectionState.Open)
-                    {
-                        objConnection.Close();
-                    }
-                }
-            }
+            string strSQL = string.Format(@"select BtnName from MenuGroup where GroupID = '{0}' and Enabled = 1", groupID);
+            return GetListFromPortDB(strSQL, "BtnName");
         }
 
         public DataTable GetPortInfo()
         {
-            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectPortDB))
-            {
-                SQLiteCommand ObjCommand;
-                SQLiteDataAdapter ObjDataAdapter;
+            string strSQL = string.Format(@"select * from PortConfig");
+            return GetPortDataBase(strSQL);
+        }
 
-                DataTable dataTable;
-                try
-                {
-                    string strSQL = string.Format(@"select * from PortConfig");
-                    ObjCommand = new SQLiteCommand(strSQL, objConnection);
-                    ObjCommand.CommandType = CommandType.Text;
-
-                    objConnection.Open();
-
-                    dataTable = new DataTable();
-                    ObjDataAdapter = new SQLiteDataAdapter(ObjCommand);
-
-                    ObjDataAdapter.Fill(dataTable);
-
-                    return dataTable;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return new DataTable();
-                }
-                finally
-                {
-                    if (objConnection.State == ConnectionState.Open)
-                    {
-                        objConnection.Close();
-                    }
-                }
-            }
+        public DataTable GetMessageDefine()
+        {
+            string strSQL = string.Format(@"select * from MessageDefine");
+            return GetPortDataBase(strSQL);
         }
     }
 }

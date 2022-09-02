@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sineva_STK_Port.Define;
 using Sineva_STK_Port.Management;
 
 namespace Sineva_STK_Port
@@ -30,23 +31,28 @@ namespace Sineva_STK_Port
         {
             if(txtUserID.Text == "")
             {
-                MessageBox.Show("Please enter user ID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DB_MESSAGE_DEFINE msgDefine = CDisplayManager.Instance.GetMessageDefine("1001");
+                CDisplayManager.Instance.Show(msgDefine);
+
                 return;
             }
             if(txtUserPW.Text == "")
             {
-                MessageBox.Show("Please enter password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DB_MESSAGE_DEFINE msgDefine = CDisplayManager.Instance.GetMessageDefine("1002");
+                CDisplayManager.Instance.Show(msgDefine);
                 return;
             }
             DataTable dt = DBManager.Instance.GetUserByUserID(txtUserID.Text);
             if (dt.Rows.Count == 0)
             {
-                MessageBox.Show("The user ID does not exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DB_MESSAGE_DEFINE msgDefine = CDisplayManager.Instance.GetMessageDefine("1003");
+                CDisplayManager.Instance.Show(msgDefine);
                 return;
             }
             if (dt.Rows[0]["Password"].ToString() == txtUserPW.Text)
             {
-                MessageBox.Show("Login successful!", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB_MESSAGE_DEFINE msgDefine = CDisplayManager.Instance.GetMessageDefine("1004");
+                CDisplayManager.Instance.Show(msgDefine);
 
                 if (dt.Rows[0]["GroupID"].ToString() != null)
                 {
@@ -60,7 +66,8 @@ namespace Sineva_STK_Port
             }
             else
             {
-                MessageBox.Show("The password is incorrect. Please re-enter it!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DB_MESSAGE_DEFINE msgDefine = CDisplayManager.Instance.GetMessageDefine("1005");
+                CDisplayManager.Instance.Show(msgDefine); 
                 return;
             }
             
