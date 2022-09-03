@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Sineva_STK_Port.Management
 {
@@ -31,29 +32,72 @@ namespace Sineva_STK_Port.Management
         }
         #endregion
 
-        public string strUserGroup = SytemUserGroup.Operator.ToString();
-        public string strLanguage = SystemLanguage.ENG.ToString();
-        DataTable msgDefineTable = DBManager.Instance.GetMessageDefine();
+        public static string m_strUserGroup = SytemUserGroup.Operator.ToString();
+        public static string m_strLanguage = SystemLanguage.ENG.ToString();
+        static DataTable msgDefineTable = DBManager.Instance.GetMessageDefine();
+        static Dictionary<string, string>? dictCtlEngText = DBManager.Instance.GetTextLanguage().Item1;
+        static Dictionary<string, string>? dictCtlChnText = DBManager.Instance.GetTextLanguage().Item2;
+        static DataTable textLanTable = DBManager.Instance.GetTextLanaguage();
 
         public void RefreshVerifyPrivilege(Control.ControlCollection parentControl, string strPrivilege)
-        {
-            List<string> listBtnName = new List<string>();
-            listBtnName = DBManager.Instance.GetBtnNameByGroupId(strPrivilege);
-
-            foreach (Control control in parentControl)
+        {         
+            List<string> listEnabeldBtnName = new List<string>();
+            listEnabeldBtnName = DBManager.Instance.GetBtnNameByGroupId(strPrivilege);
+          
+            string preLan = m_strLanguage == SystemLanguage.ENG.ToString() ? SystemLanguage.CHN.ToString() : SystemLanguage.ENG.ToString(); 
+            foreach (Control c in parentControl)
             {
-                if (control is Button)
-                {
-                    if (listBtnName.Exists(t => t == control.Name))
+                foreach (Control c2 in c.Controls)
+                {                    
+                    if (c2 is Button)
                     {
-                        control.Enabled = true;
+                        if (listEnabeldBtnName.Exists(t => t == c2.Name))
+                        {
+                            c2.Enabled = true;
+                        }
+                        else
+                        {
+                            c2.Enabled = false;
+                        }
                     }
-                    else
+
+                    foreach (DataRow row in textLanTable.Select(string.Format("{0} = '{1}'", preLan, c2.Text)))
                     {
-                        control.Enabled = false;
+                        c2.Text = row[m_strLanguage].ToString();
                     }
                 }
             }
+        }
+
+        public void RefreshChildFormLanguage(Control.ControlCollection parentControl)
+        {
+            string preLan = m_strLanguage == SystemLanguage.ENG.ToString() ? SystemLanguage.CHN.ToString() : SystemLanguage.ENG.ToString();
+            foreach (Control c in parentControl)
+            {
+                foreach (DataRow row in textLanTable.Select(string.Format("{0} = '{1}'", preLan, c.Text)))
+                {
+                    c.Text = row[m_strLanguage].ToString();
+                }
+            }
+        }
+        public void SetCtlText(Control c, string textKey)
+        {
+            string text = string.Empty;
+            if (m_strLanguage == SystemLanguage.ENG.ToString())
+            {
+                if(dictCtlEngText != null)
+                {
+                    dictCtlEngText.TryGetValue(textKey, out text);
+                }                
+            }
+            else if(m_strLanguage == SystemLanguage.CHN.ToString())
+            {
+                if (dictCtlChnText != null)
+                {
+                    dictCtlChnText.TryGetValue(textKey, out text);
+                }
+            }
+            c.Text = text;
         }
 
         public DB_MESSAGE_DEFINE GetMessageDefine(string msgID)
@@ -65,11 +109,11 @@ namespace Sineva_STK_Port.Management
                 foreach (DataRow row in msgDefineTable.Select(string.Format("ID = '{0}'", msgID)))
                 {
                     msg = DB_MESSAGE_DEFINE.Create_DB_MESSAGE_DEFINE(row);
-                    if (strLanguage == SystemLanguage.ENG.ToString())
+                    if (m_strLanguage == SystemLanguage.ENG.ToString())
                     {
                         msg.TEXT = msg.EngName;
                     }
-                    else if (strLanguage == SystemLanguage.CHN.ToString())
+                    else if (m_strLanguage == SystemLanguage.CHN.ToString())
                     {
                         msg.TEXT = msg.ChnName;
                     }
@@ -186,9 +230,10 @@ namespace Sineva_STK_Port.Management
             Form topmostForm = new Form();
             
             topmostForm.Size = new System.Drawing.Size(1, 1);
-            topmostForm.StartPosition = FormStartPosition.Manual;
+            topmostForm.StartPosition = FormStartPosition.CenterParent;
             System.Drawing.Rectangle rect = SystemInformation.VirtualScreen;
             topmostForm.Location = new System.Drawing.Point(rect.Bottom + 10, rect.Right + 10);
+
             topmostForm.Show();
 
             topmostForm.Focus();

@@ -215,5 +215,50 @@ namespace Sineva_STK_Port.Management
             string strSQL = string.Format(@"select * from MessageDefine");
             return GetPortDataBase(strSQL);
         }
+
+        public DataTable GetBtnTextTable()
+        {
+            string strSQL = string.Format(@"select * from MessageDefine");
+            return GetPortDataBase(strSQL);
+        }
+
+        public (Dictionary<string, string>?, Dictionary<string, string>?) GetTextLanguage()
+        {
+            try
+            {
+                Dictionary<string, string> dictEngText = new Dictionary<string, string>();
+                Dictionary<string, string> dictChnText = new Dictionary<string, string>();
+                DataTable dt = new DataTable();
+
+                string strSQLEng = string.Format(@"select Name,ENG from Language");
+                string strSQLChn = string.Format(@"select Name,CHN from Language");
+                
+                dt = GetPortDataBase(strSQLEng);
+                if(dt != null && dt.Rows.Count > 0)
+                {
+                    dictEngText = dt.AsEnumerable().ToDictionary(p => p[0].ToString(), p => p[1].ToString());
+                    dt.Clear();
+                }
+
+                dt = GetPortDataBase(strSQLChn);
+                if(dt != null && dt.Rows.Count > 0)
+                {
+                    dictChnText = dt.AsEnumerable().ToDictionary(p => p[0].ToString(), p => p[1].ToString());
+                }
+
+                return (dictEngText, dictChnText);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return (null, null);
+            }
+        }
+
+        public DataTable GetTextLanaguage()
+        {
+            string strSQL = string.Format(@"select * from Language");
+            return GetPortDataBase(strSQL);
+        }
     }
 }

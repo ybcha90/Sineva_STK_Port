@@ -67,9 +67,8 @@ namespace Sineva_STK_Port.Define
     {
         PROCESS_STATUS_NONE = 0,
         PROCESS_STATUS_IDLE = 1,
-        PROCESS_STATUS_AUTO_RUN = 2,
-        PROCESS_STATUS_AUTO_MANUAL = 3,
-        PROCESS_STATUS_ALARM = 4
+        PROCESS_STATUS_RUN = 2,
+        PROCESS_STATUS_ALARM = 3
     }
 
     public enum PortInOutMode : ushort
@@ -101,5 +100,22 @@ namespace Sineva_STK_Port.Define
         ENG,
         CHN,
     }
+
+    public enum Text
+    {
+        NORMAL_STATE,
+        ALARM_STATE,
+        
+        SCS_CONNECTED,
+        SCS_DISCONNECTED,
+        
+        ID_NOT_READ,
+        WAITING_FOR_HOST,
+        ID_VERIFICATION_OK,
+        ID_VERIFICATION_FAILED,
+
+
+    }
+
 
 }

@@ -23,10 +23,10 @@ namespace Sineva_STK_Port
 
         public void RefreshFormMain()
         {
-            string language = CDisplayManager.Instance.strLanguage;
-            string privilege = CDisplayManager.Instance.strUserGroup;
-            CDisplayManager.Instance.RefreshVerifyPrivilege(this.panelLeft.Controls, privilege);
-            CDisplayManager.Instance.RefreshVerifyPrivilege(this.panelDown.Controls, privilege);
+            string language = CDisplayManager.m_strLanguage;
+            string privilege = CDisplayManager.m_strUserGroup;
+            CDisplayManager.Instance.RefreshVerifyPrivilege(this.Controls, privilege);
+
         }
 
         private void GetPortInfo()

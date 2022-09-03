@@ -22,7 +22,7 @@ namespace Sineva_STK_Port
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -56,10 +56,10 @@ namespace Sineva_STK_Port
 
                 if (dt.Rows[0]["GroupID"].ToString() != null)
                 {
-                    CDisplayManager.Instance.strUserGroup = dt.Rows[0]["GroupID"].ToString();
+                    CDisplayManager.m_strUserGroup = dt.Rows[0]["GroupID"].ToString();
                 }
 
-                CDisplayManager.Instance.strLanguage = rbtnEng.Checked ? "ENG" : "CHN";
+                CDisplayManager.m_strLanguage = rbtnEng.Checked ? "ENG" : "CHN";
                 this.refreshPrivilege();
 
                 this.Close();   
@@ -71,6 +71,21 @@ namespace Sineva_STK_Port
                 return;
             }
             
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            CDisplayManager.Instance.RefreshChildFormLanguage(this.Controls);
+            if (CDisplayManager.m_strLanguage == SystemLanguage.ENG.ToString())
+            {
+                rBtnChn.Checked = false;
+                rbtnEng.Checked = true;
+            }
+            else
+            {
+                rBtnChn.Checked = true;
+                rbtnEng.Checked = false;
+            }
         }
     }
 }

@@ -414,6 +414,7 @@ namespace Sineva_STK_Port
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain_7Inch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Port Manager";
             this.Load += new System.EventHandler(this.FormMain_7Inchi_Load);
             this.panelUp.ResumeLayout(false);
