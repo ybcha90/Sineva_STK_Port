@@ -2,6 +2,7 @@ using Sineva_STK_Port.Management;
 using System.Data;
 using Sineva_STK_Port.Define;
 using System.Xml.Serialization;
+using Microsoft.VisualBasic.Logging;
 
 namespace Sineva_STK_Port
 {    
@@ -26,6 +27,14 @@ namespace Sineva_STK_Port
             string language = CDisplayManager.m_strLanguage;
             string privilege = CDisplayManager.m_strUserGroup;
             CDisplayManager.Instance.RefreshVerifyPrivilege(this.Controls, privilege);
+            if(privilege != SytemUserGroup.Operator.ToString())
+            {
+                CDisplayManager.Instance.SetCtlText(Btn_LogIn, "Log Out");
+            }
+            else
+            {
+                CDisplayManager.Instance.SetCtlText(Btn_LogIn, "Log In");
+            }
 
         }
 
@@ -42,8 +51,20 @@ namespace Sineva_STK_Port
         private void Btn_Login_Click(object sender, EventArgs e)
         {
             FormLogin formLogin = new FormLogin();
-            formLogin.refreshPrivilege += new FormLogin.UserLoginEventHandler(this.RefreshFormMain);
-            formLogin.ShowDialog();
+            if (CDisplayManager.m_strUserGroup == SytemUserGroup.Operator.ToString())
+            {                
+                formLogin.refreshPrivilege += new FormLogin.UserLoginEventHandler(this.RefreshFormMain);
+                formLogin.ShowDialog();
+            }
+            else
+            {
+                DB_MESSAGE_DEFINE msgDefine = CDisplayManager.Instance.GetMessageDefine("1006");
+                if (CDisplayManager.Instance.Show(msgDefine) == DialogResult.OK)
+                {
+                    CDisplayManager.m_strUserGroup = SytemUserGroup.Operator.ToString();
+                    RefreshFormMain();
+                }
+            }
         }
     }
 }

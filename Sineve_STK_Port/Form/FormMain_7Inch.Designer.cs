@@ -117,7 +117,7 @@ namespace Sineva_STK_Port
             this.Btn_CarrierID.Name = "Btn_CarrierID";
             this.Btn_CarrierID.Size = new System.Drawing.Size(475, 60);
             this.Btn_CarrierID.TabIndex = 0;
-            this.Btn_CarrierID.Text = "Carrier ID : UNK_CAS10P0120220901100612345678";
+            this.Btn_CarrierID.Text = "Carrier ID :123456";
             this.Btn_CarrierID.UseVisualStyleBackColor = false;
             // 
             // Btn_TransferState
