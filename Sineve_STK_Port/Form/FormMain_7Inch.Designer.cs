@@ -165,6 +165,7 @@ namespace Sineva_STK_Port
             this.Btn_ControlStatus.TabIndex = 13;
             this.Btn_ControlStatus.Text = "Normal";
             this.Btn_ControlStatus.UseVisualStyleBackColor = true;
+            this.Btn_ControlStatus.Click += new System.EventHandler(this.Btn_ControlStatus_Click);
             // 
             // Btn_PortState
             // 

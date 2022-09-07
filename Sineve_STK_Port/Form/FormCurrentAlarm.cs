@@ -20,7 +20,19 @@ namespace Sineva_STK_Port
 
         private void FormCurrentAlarm_Load(object sender, EventArgs e)
         {
-            //DataTable Portinfo = DBManager.Instance.GetCurrentAlarm();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            GetAlarmData(); 
+        }
+        private void GetAlarmData()
+        {
+            DataTable GetAlarminfo = DBManager.Instance.GetCurrentAlarm();
+            dGView_CurrentAlarm.DataSource = GetAlarminfo;
+            //return Portinfo;
+        }
+
+        private void Btn_AlarmExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

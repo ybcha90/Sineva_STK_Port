@@ -36,6 +36,8 @@ namespace Sineva_STK_Port.Management
         string strConnectPortDB = System.Configuration.ConfigurationManager.ConnectionStrings["PortManager"].ToString();
         string strConnectHistoryDB = System.Configuration.ConfigurationManager.ConnectionStrings["HistoryManager"].ToString();
 
+    //=============================================================================================================== Port.DB
+        #region 
         public DataTable GetPortDataBase(string strSQL)
         {
             using (SQLiteConnection objConnection = new SQLiteConnection(strConnectPortDB))
@@ -118,80 +120,6 @@ namespace Sineva_STK_Port.Management
             }
         }
 
-        public DataTable GetHistoryDataBase(string strSQL)
-        {
-            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectHistoryDB))
-            {
-                SQLiteCommand ObjCommand;
-                SQLiteDataAdapter ObjDataAdapter;
-
-                DataTable dataTable;
-                try
-                {
-                    ObjCommand = new SQLiteCommand(strSQL, objConnection);
-                    ObjCommand.CommandType = CommandType.Text;
-
-                    objConnection.Open();
-
-                    dataTable = new DataTable();
-                    ObjDataAdapter = new SQLiteDataAdapter(ObjCommand);
-
-                    ObjDataAdapter.Fill(dataTable);
-
-                    return dataTable;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return new DataTable();
-                }
-                finally
-                {
-                    if (objConnection.State == ConnectionState.Open)
-                    {
-                        objConnection.Close();
-                    }
-                }
-            }
-        }
-
-        public bool InsertHistoryDataBase(List<string> sqlList)
-        {
-            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectHistoryDB))
-            {
-                objConnection.Open();
-                using (SQLiteTransaction tran = objConnection.BeginTransaction())
-                {
-                    try
-                    {
-                        SQLiteCommand ObjCommand = objConnection.CreateCommand();
-                        ObjCommand.Transaction = tran;
-                        ObjCommand.CommandType = CommandType.Text;
-
-                        foreach(string sql in sqlList)
-                        {
-                            ObjCommand.CommandText = sql;
-                            ObjCommand.ExecuteNonQuery();
-                        }
-                        tran.Commit();
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                        return false;
-                    }
-                    finally
-                    {
-                        if (objConnection.State == ConnectionState.Open)
-                        {
-                            objConnection.Close();
-                        }
-                    }
-                }
-            }
-        }
-
         public DataTable GetUserByUserID(string strUserId)
         {
             string strSQL = string.Format(@"select * from User where ID = '{0}'", strUserId);
@@ -260,5 +188,90 @@ namespace Sineva_STK_Port.Management
             string strSQL = string.Format(@"select * from Language");
             return GetPortDataBase(strSQL);
         }
+
+        //GetCurrentAlarm
+        public DataTable GetCurrentAlarm()
+        {
+            string strSQL = string.Format(@"select AlarmID,AlarmCode,AlarmText,SetTime from Alarm");
+            return GetPortDataBase(strSQL);
+        }
+        #endregion
+
+    //=============================================================================================================== History.DB
+        #region
+        public DataTable GetHistoryDataBase(string strSQL)
+        {
+            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectHistoryDB))
+            {
+                SQLiteCommand ObjCommand;
+                SQLiteDataAdapter ObjDataAdapter;
+
+                DataTable dataTable;
+                try
+                {
+                    ObjCommand = new SQLiteCommand(strSQL, objConnection);
+                    ObjCommand.CommandType = CommandType.Text;
+
+                    objConnection.Open();
+
+                    dataTable = new DataTable();
+                    ObjDataAdapter = new SQLiteDataAdapter(ObjCommand);
+
+                    ObjDataAdapter.Fill(dataTable);
+
+                    return dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return new DataTable();
+                }
+                finally
+                {
+                    if (objConnection.State == ConnectionState.Open)
+                    {
+                        objConnection.Close();
+                    }
+                }
+            }
+        }
+
+        public bool InsertHistoryDataBase(List<string> sqlList)
+        {
+            using (SQLiteConnection objConnection = new SQLiteConnection(strConnectHistoryDB))
+            {
+                objConnection.Open();
+                using (SQLiteTransaction tran = objConnection.BeginTransaction())
+                {
+                    try
+                    {
+                        SQLiteCommand ObjCommand = objConnection.CreateCommand();
+                        ObjCommand.Transaction = tran;
+                        ObjCommand.CommandType = CommandType.Text;
+
+                        foreach (string sql in sqlList)
+                        {
+                            ObjCommand.CommandText = sql;
+                            ObjCommand.ExecuteNonQuery();
+                        }
+                        tran.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        return false;
+                    }
+                    finally
+                    {
+                        if (objConnection.State == ConnectionState.Open)
+                        {
+                            objConnection.Close();
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }

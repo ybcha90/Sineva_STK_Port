@@ -67,6 +67,8 @@ namespace Sineva_STK_Port
             }
         }
 
+        //================================================Paint Function
+        #region
         //private void FormMain_Paint(object sender, PaintEventArgs e)
         //{
         //    Rectangle tang = this.ClientRectangle;					//获取窗口矩形 为了下面得到窗口的宽高
@@ -110,6 +112,12 @@ namespace Sineva_STK_Port
                                   Color.DarkGray, 6, ButtonBorderStyle.Dashed,
                                   Color.WhiteSmoke, 6, ButtonBorderStyle.Dashed);
         }
+        #endregion
 
+        private void Btn_ControlStatus_Click(object sender, EventArgs e)
+        {
+            FormCurrentAlarm formAlarm=new FormCurrentAlarm();
+            formAlarm.ShowDialog();
+        }
     }
 }
