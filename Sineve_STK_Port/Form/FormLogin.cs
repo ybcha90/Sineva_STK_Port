@@ -51,6 +51,7 @@ namespace Sineva_STK_Port
             }
             if (dt.Rows[0]["Password"].ToString() == txtUserPW.Text)
             {
+                CDisplayManager.m_strUserName = txtUserID.Text;
                 DB_MESSAGE_DEFINE msgDefine = CDisplayManager.Instance.GetMessageDefine("1004");
                 CDisplayManager.Instance.Show(msgDefine);
 
@@ -58,7 +59,8 @@ namespace Sineva_STK_Port
                 {
                     CDisplayManager.m_strUserGroup = dt.Rows[0]["GroupID"].ToString();
                 }
-
+                //CDisplayManager.Instance.GetCurrentUserInfo(txtUserID.Text, dt.Rows[0]["GroupID"].ToString());
+               
                 CDisplayManager.m_strLanguage = rbtnEng.Checked ? "ENG" : "CHN";
                 this.refreshPrivilege();
 
@@ -70,7 +72,6 @@ namespace Sineva_STK_Port
                 CDisplayManager.Instance.Show(msgDefine); 
                 return;
             }
-            
         }
 
         private void FormLogin_Load(object sender, EventArgs e)

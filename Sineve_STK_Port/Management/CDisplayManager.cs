@@ -34,11 +34,19 @@ namespace Sineva_STK_Port.Management
 
         public static string m_strUserGroup = SytemUserGroup.Operator.ToString();
         public static string m_strLanguage = SystemLanguage.ENG.ToString();
+        public static string m_strUserName= "Operator";
         static DataTable msgDefineTable = DBManager.Instance.GetMessageDefine();
         static Dictionary<string, string>? dictCtlEngText = DBManager.Instance.GetTextLanguage().Item1;
         static Dictionary<string, string>? dictCtlChnText = DBManager.Instance.GetTextLanguage().Item2;
         static DataTable textLanTable = DBManager.Instance.GetTextLanaguage();
 
+        //public struct m_currentUserInfo
+        //{
+        //    public string m_strCurrentUsername;
+        //    public string m_strCurrentUserGroup;
+        //}
+
+        // ==============================================================================================Get CurrentLogin User's Privilege
         public void RefreshVerifyPrivilege(Control.ControlCollection parentControl, string strPrivilege)
         {         
             List<string> listEnabeldBtnName = new List<string>();
@@ -68,6 +76,21 @@ namespace Sineva_STK_Port.Management
                 }
             }
         }
+
+        //public void GetCurrentUserInfo(string username,string userGruop)
+        //{
+        //    m_currentUserInfo currentUserInfo=new m_currentUserInfo();
+        //    currentUserInfo.m_strCurrentUsername = username;
+        //    currentUserInfo.m_strCurrentUserGroup = userGruop;
+
+        //}
+        //public m_currentUserInfo[] GetCurrentUserInfo(string username, string userGruop)
+        //{
+        //    m_currentUserInfo[] currentUserInfo = new m_currentUserInfo[2];
+        //    currentUserInfo[0].m_strCurrentUsername = username;
+        //    currentUserInfo[1].m_strCurrentUserGroup = userGruop;
+        //    return currentUserInfo;
+        //}
 
         public void RefreshChildFormLanguage(Control.ControlCollection parentControl)
         {

@@ -29,6 +29,7 @@ namespace Sineva_STK_Port
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain_7Inch));
             this.panelUp = new System.Windows.Forms.Panel();
             this.Btn_CarrierIDStatus = new System.Windows.Forms.Button();
@@ -56,13 +57,17 @@ namespace Sineva_STK_Port
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.statStrip_Info = new System.Windows.Forms.StatusStrip();
             this.panelDown = new System.Windows.Forms.Panel();
             this.Btn_Reset = new System.Windows.Forms.Button();
             this.Btn_Stop = new System.Windows.Forms.Button();
+            this.statusStrip_Info = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel_UserInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_CurrentTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer_CurrentTime = new System.Windows.Forms.Timer(this.components);
             this.panelUp.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelDown.SuspendLayout();
+            this.statusStrip_Info.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelUp
@@ -372,14 +377,6 @@ namespace Sineva_STK_Port
             this.panelMain.TabIndex = 3;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
-            // statStrip_Info
-            // 
-            this.statStrip_Info.Location = new System.Drawing.Point(147, 457);
-            this.statStrip_Info.Name = "statStrip_Info";
-            this.statStrip_Info.Size = new System.Drawing.Size(857, 22);
-            this.statStrip_Info.TabIndex = 0;
-            this.statStrip_Info.Text = "statStrip_Info";
-            // 
             // panelDown
             // 
             this.panelDown.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -420,12 +417,44 @@ namespace Sineva_STK_Port
             this.Btn_Stop.Text = "Stop";
             this.Btn_Stop.UseVisualStyleBackColor = true;
             // 
+            // statusStrip_Info
+            // 
+            this.statusStrip_Info.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel_UserInfo,
+            this.toolStripStatusLabel_CurrentTime});
+            this.statusStrip_Info.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.statusStrip_Info.Location = new System.Drawing.Point(147, 456);
+            this.statusStrip_Info.Name = "statusStrip_Info";
+            this.statusStrip_Info.Size = new System.Drawing.Size(857, 23);
+            this.statusStrip_Info.TabIndex = 4;
+            this.statusStrip_Info.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel_UserInfo
+            // 
+            this.toolStripStatusLabel_UserInfo.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.toolStripStatusLabel_UserInfo.Name = "toolStripStatusLabel_UserInfo";
+            this.toolStripStatusLabel_UserInfo.Size = new System.Drawing.Size(79, 18);
+            this.toolStripStatusLabel_UserInfo.Text = "UserInfo";
+            // 
+            // toolStripStatusLabel_CurrentTime
+            // 
+            this.toolStripStatusLabel_CurrentTime.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel_CurrentTime.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.toolStripStatusLabel_CurrentTime.Name = "toolStripStatusLabel_CurrentTime";
+            this.toolStripStatusLabel_CurrentTime.Size = new System.Drawing.Size(109, 18);
+            this.toolStripStatusLabel_CurrentTime.Text = "CurrentTime";
+            // 
+            // timer_CurrentTime
+            // 
+            this.timer_CurrentTime.Tick += new System.EventHandler(this.CurrentTimer_Tick);
+            // 
             // FormMain_7Inch
             // 
+            this.AcceptButton = this.button2;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 557);
-            this.Controls.Add(this.statStrip_Info);
+            this.Controls.Add(this.statusStrip_Info);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelDown);
             this.Controls.Add(this.panelLeft);
@@ -440,6 +469,8 @@ namespace Sineva_STK_Port
             this.panelUp.ResumeLayout(false);
             this.panelLeft.ResumeLayout(false);
             this.panelDown.ResumeLayout(false);
+            this.statusStrip_Info.ResumeLayout(false);
+            this.statusStrip_Info.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -476,6 +507,9 @@ namespace Sineva_STK_Port
         private Button Btn_TransferState;
         private Button Btn_CarrierIDStatus;
         private Button Btn_PortServiceState;
-        private StatusStrip statStrip_Info;
+        private StatusStrip statusStrip_Info;
+        private ToolStripStatusLabel toolStripStatusLabel_CurrentTime;
+        private System.Windows.Forms.Timer timer_CurrentTime;
+        private ToolStripStatusLabel toolStripStatusLabel_UserInfo;
     }
 }

@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using Microsoft.VisualBasic.Logging;
 using System.Drawing;
 
+
 namespace Sineva_STK_Port
 {
     public partial class FormMain_7Inch : Form
@@ -17,15 +18,20 @@ namespace Sineva_STK_Port
         private void FormMain_7Inchi_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.ActiveControl = button2;
             this.RefreshFormMain();
-            GetPortInfo();            
+            GetPortInfo();
+            toolStripStatusLabel_CurrentTime.Alignment = ToolStripItemAlignment.Right;
+            toolStripStatusLabel_CurrentTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            timer_CurrentTime.Start();
+            timer_CurrentTime.Interval = 1000;
+
         }
 
         public void RefreshFormMain()
         {
             string language = CDisplayManager.m_strLanguage;
             string privilege = CDisplayManager.m_strUserGroup;
+            string str_CurrentUsername = CDisplayManager.m_strUserName;
             CDisplayManager.Instance.RefreshVerifyPrivilege(this.Controls, privilege);
             if (privilege != SytemUserGroup.Operator.ToString())
             {
@@ -35,7 +41,7 @@ namespace Sineva_STK_Port
             {
                 CDisplayManager.Instance.SetCtlText(Btn_LogIn, "Log In");
             }
-
+            toolStripStatusLabel_UserInfo.Text = str_CurrentUsername + "/" + privilege;
         }
 
         private void GetPortInfo()
@@ -43,6 +49,8 @@ namespace Sineva_STK_Port
             DataTable Portinfo = DBManager.Instance.GetPortInfo();
             Btn_PortID.Text = "PortID：" + Portinfo.Rows[0][0].ToString();
         }
+
+        
         private void Btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -89,7 +97,7 @@ namespace Sineva_STK_Port
                                   Color.Black, 2, ButtonBorderStyle.Solid,
                                   Color.Black, 2, ButtonBorderStyle.Solid);
         }
-        protected void Button_Paint(object sender, PaintEventArgs e)
+        public void Button_Paint(object sender, PaintEventArgs e)
         {
             ((System.Windows.Forms.Control)sender).BackColor = System.Drawing.Color.LightSkyBlue;
             ((System.Windows.Forms.Control)sender).ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -102,7 +110,7 @@ namespace Sineva_STK_Port
                                   Color.WhiteSmoke, 8, ButtonBorderStyle.Dashed,
                                   Color.Gray, 8, ButtonBorderStyle.Dotted);
         }
-        protected void InfoButton_Paint(object sender, PaintEventArgs e)
+        public void InfoButton_Paint(object sender, PaintEventArgs e)
         {
             ((System.Windows.Forms.Control)sender).BackColor = System.Drawing.SystemColors.HighlightText;
             Rectangle borderRectangle = ((System.Windows.Forms.Control)sender).ClientRectangle;
@@ -118,6 +126,11 @@ namespace Sineva_STK_Port
         {
             FormCurrentAlarm formAlarm=new FormCurrentAlarm();
             formAlarm.ShowDialog();
+        }
+
+        private void CurrentTimer_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusLabel_CurrentTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
     }
 }
